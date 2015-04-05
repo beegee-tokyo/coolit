@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name" translatable="false">Cool It</string>
+    <string name="tempTitle">Current temperature</string>
+    <string name="tempText" translatable="false">100.1&#176;C</string>
+    <string name="degreeSign" translatable="false">&#176;</string>
+    <string name="activationTemp">Activation\nTemperature</string>
+    <string name="alarmTitle">Temperature Alarm</string>
+    <string name="alarmText">All Apps will be suspended and the screen will turn off.</string>
+    <string name="notDeviceAdmin">The app is not registered as a device admin. The running apps will still be killed, but the screen will not turn off.</string>
+    <string name="deviceAdminEnabled">Cool It can now switch off the screen. This helps to cool down your device.</string>
+    <string name="deviceAdminDisableReq">If you disable the admin rights Cool It can no longer switch off the screen. The running apps will still be killed.</string>
+    <string name="deviceAdminDisabled">The app is no longer a device admin. The running apps will still be killed, but the screen will not turn off.</string>
+    <string name="help">Blue button kills all running apps and switch off the screen now.\n\nActivation temperature is the point at which this process is started automatically. \n\nTo activate the automatic process press the green button. \n\nTo stop the automatic process press the red button.</string>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="alarmTemp">
+        <item>60&#176;C</item>
+        <item>65&#176;C</item>
+        <item>70&#176;C</item>
+        <item>75&#176;C</item>
+        <item>80&#176;C</item>
+        <item>85&#176;C</item>
+        <item>90&#176;C</item>
+        <item>95&#176;C</item>
+        <item>100&#176;C</item>
+    </string-array>
+
+    <integer-array name="intAlarmTemp">
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+    </integer-array>
+
+</resources>
