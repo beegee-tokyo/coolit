@@ -16,7 +16,7 @@ import android.widget.Toast;
  */
 public class MyAdmin extends DeviceAdminReceiver {
 
-    void showToast(Context context, CharSequence msg) {
+    private void showToast(Context context, CharSequence msg) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 

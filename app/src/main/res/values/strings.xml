@@ -4,7 +4,8 @@
     <string name="tempTitle">Current temperature</string>
     <string name="tempText" translatable="false">100.1&#176;C</string>
     <string name="degreeSign" translatable="false">&#176;</string>
-    <string name="activationTemp">Activation\nTemperature</string>
+    <string name="activationTemp">Activation\nTemp</string>
+    <string name="activationTempLand">Activation Temp</string>
     <string name="alarmTitle">Temperature Alarm</string>
     <string name="alarmText">All Apps will be suspended and the screen will turn off.</string>
     <string name="notDeviceAdmin">The app is not registered as a device admin. The running apps will still be killed, but the screen will not turn off.</string>

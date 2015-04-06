@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="activationTemp">Start Temperatur</string>
+    <string name="activationTempLand">Start Temp</string>
     <string name="alarmText">Alle Applicationen werden beendet und der Bildschirm abgeschalten.</string>
     <string name="alarmTitle">Temperatur Alarm</string>
     <string name="deviceAdminDisableReq">Ohne Admin Rechte kann Cool It den Bildschirm nicht abschalten. Nur laufende Applikationen werden beendet.</string>
@@ -9,4 +9,5 @@
     <string name="help">Der Blaue Schalter beendet jetzt laufende Applikationen und schaltet den Bildschirm ab.\n\nStart Temperatur bestimmt den Punkt an dem dieser Prozess automatisch gestartet wird. \n\nDer gruene Schalter aktiviert die automatische Ueberwachung.\n\nDer rote Schalter deaktiviert die Ueberwachung.</string>
     <string name="notDeviceAdmin">Die Applikation hat keine Admin Rechte. Laufende Applikationen werden beendet, aber der Bildschirm wird nicht abgeschalten.</string>
     <string name="tempTitle">Aktuelle Temperatur</string>
+    <string name="activationTemp">Start\nTemp</string>
 </resources>

@@ -1,7 +1,5 @@
 package tk.giesecke.coolit;
 
-import android.app.PendingIntent;
-
 /**
  * DataHolder
  * <p/>
@@ -10,12 +8,8 @@ import android.app.PendingIntent;
  * @author Bernd Giesecke
  * @version 1.0 April 5, 2015.
  */
-public class DataHolder {
+class DataHolder {
 
-    /**
-     * Storage for pendingIntent of background service
-     */
-    private static PendingIntent pendingIntent;
     /**
      * Storage for current temperature
      */
@@ -25,7 +19,7 @@ public class DataHolder {
      * Initialization of some values
      */
     private DataHolder() {
-        pendingIntent = null;
+
     }
 
     /**

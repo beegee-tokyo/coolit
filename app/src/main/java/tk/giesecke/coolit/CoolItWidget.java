@@ -103,8 +103,8 @@ public class CoolItWidget extends AppWidgetProvider {
      * @param appWidgetManager AppWidgetManager of this widget.
      * @param appWidgetId      Array with all widget IDs.
      */
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                        int appWidgetId) {
 
         // Construct the RemoteViews object
         /** View for this widgets */

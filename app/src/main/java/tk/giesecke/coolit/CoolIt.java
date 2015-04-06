@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
     /**
      * Debug tag
      */
-    final static String LOG_TAG = "CoolIt";
+    private final static String LOG_TAG = "CoolIt";
     /**
      * Activity context
      */
@@ -47,46 +48,41 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
     /**
      * Receiver for battery temperature display
      */
-    mBatInfoReceiver myBatInfoReceiver;
+    private mBatInfoReceiver myBatInfoReceiver;
     /**
      * TextView for battery temperature display
      */
-    TextView tv_battTemp;
+    private TextView tv_battTemp;
     /**
      * Selected temperature for kill all apps and switch off screen
      */
-    int alarmTemp;
-    /**
-     * Array of available temperatures
-     */
-    String[] alarmTempArray;
+    private int alarmTemp;
     /**
      * Access to shared preferences
      */
-    SharedPreferences myPrefs;
+    private SharedPreferences myPrefs;
     /**
      * Access to DevicePolicyManager
      */
-    DevicePolicyManager deviceManger;
-    /**
-     * Access to ActivityManager
-     */
-    ActivityManager activityManager;
+    private DevicePolicyManager deviceManger;
     /**
      * ComponentName of Admin activity
      */
-    ComponentName compName;
+    private ComponentName compName;
     /**
      * Result of request for device admin
      */
-    static final int RESULT_ENABLE = 1;
+    private static final int RESULT_ENABLE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         deviceManger = (DevicePolicyManager) getSystemService(
                 Context.DEVICE_POLICY_SERVICE);
-        activityManager = (ActivityManager) getSystemService(
+        /*
+      Access to ActivityManager
+     */
+        ActivityManager activityManager = (ActivityManager) getSystemService(
                 Context.ACTIVITY_SERVICE);
         compName = new ComponentName(this, MyAdmin.class);
         setContentView(R.layout.cool_it);
@@ -114,9 +110,21 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
         /** TextView for title above temperature */
         TextView tv_temp_title = (TextView) this.findViewById(R.id.tv_temp_title);
         tv_battTemp = (TextView) this.findViewById(R.id.tv_battTemp);
+        /** TextView for title above temperature */
+        TextView tv_help = (TextView) this.findViewById(R.id.tv_help);
+        /** TextView for alarm temperature */
+        TextView tv_selectTemp = (TextView) this.findViewById(R.id.tv_selectTemp);
+        /** Button for exit */
+        Button bt_exit = (Button) this.findViewById(R.id.bt_exit);
+        /** Button for save and exit */
+        Button bt_set = (Button) this.findViewById(R.id.bt_set);
         /** Typeface for this apps font */
         Typeface type = Typeface.createFromAsset(getAssets(), "IDroid Bold.otf");
         tv_temp_title.setTypeface(type);
+        tv_help.setTypeface(type);
+        tv_selectTemp.setTypeface(type);
+        bt_exit.setTypeface(type);
+        bt_set.setTypeface(type);
         tv_battTemp.setTypeface(type);
 
         // Initialize the NumberPicker with selectable reset interval
@@ -132,7 +140,10 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
         };
 
         // Get list with available intervals for reboot
-        alarmTempArray = getResources().getStringArray(R.array.alarmTemp);
+        /*
+      Array of available temperatures
+     */
+        String[] alarmTempArray = getResources().getStringArray(R.array.alarmTemp);
         /** pointer to NumberPicker for interval list */
         NumberPicker np_alarmTemp =
                 (NumberPicker) findViewById(R.id.np_alarmTemp);
@@ -292,7 +303,7 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
      * @see <a href="http://rdcworld-android.blogspot.in/2012/03/lock-phone-screen-programmtically.html">
      * Lock Phone Screen Programmtically</a>
      */
-    public void switchScreenOff(Context context) {
+    private void switchScreenOff(Context context) {
         /** Check if we are device admin */
         boolean active = deviceManger.isAdminActive(compName);
         if (active) {

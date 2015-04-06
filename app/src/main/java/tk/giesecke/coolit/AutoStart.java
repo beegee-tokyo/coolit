@@ -20,7 +20,7 @@ public class AutoStart extends BroadcastReceiver {
     /**
      * Debug tag
      */
-    final static String LOG_TAG = "CoolIt AutoStart";
+    private final static String LOG_TAG = "CoolIt AutoStart";
 
     public AutoStart() {
     }

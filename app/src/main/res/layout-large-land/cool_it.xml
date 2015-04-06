@@ -11,96 +11,69 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/tempTitle"
         android:id="@+id/tv_temp_title"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:textSize="60sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@android:color/holo_red_dark"
+        tools:ignore="RelativeOverlap"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tempText"
         android:id="@+id/tv_battTemp"
         android:layout_below="@+id/tv_temp_title"
-        android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="120sp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_red_light"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/help"
         android:id="@+id/tv_help"
         android:layout_below="@+id/tv_battTemp"
-        android:layout_toStartOf="@+id/v_seperator"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp"
-        android:paddingLeft="10dp"
+        android:padding="20dp"
         android:layout_toLeftOf="@+id/v_seperator"
-        tools:ignore="NewApi"/>
-
-    <View
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
-        android:id="@+id/v_seperator"
-        android:layout_below="@+id/tv_battTemp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/ll_rightSideBottom"
-        android:layout_toStartOf="@+id/ll_rightSideBottom"
-        android:layout_alignWithParentIfMissing="false"/>
+        android:layout_toStartOf="@+id/v_seperator"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:id="@+id/ll_rightSideTop"
-        android:layout_below="@+id/tv_battTemp">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/activationTemp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/activationTempLand"
             android:id="@+id/tv_selectTemp"
-            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:layout_marginBottom="5dp"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <NumberPicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/np_alarmTemp"
             android:entries="@array/alarmTemp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:measureWithLargestChild="false"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/ll_rightSideBottom"
-
-        android:gravity="bottom">
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -109,11 +82,13 @@
             android:text="@android:string/cancel"
             android:textColor="#FFFFFF"
             android:contentDescription="@android:string/cancel"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/redbutton"
             android:onClick="onClick"
-            android:scaleType="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center_horizontal"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -123,22 +98,12 @@
             android:textColor="#FFFFFF"
             android:contentDescription="@android:string/ok"
             android:background="@drawable/greenbutton"
+            android:layout_gravity="center_horizontal"
             android:onClick="onClick"
-            android:scaleType="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="5dp"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/v_seperator"
-        android:layout_toStartOf="@+id/v_seperator"
-        android:layout_below="@+id/tv_help">
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -146,10 +111,25 @@
             android:id="@+id/bt_cool"
             android:src="@drawable/bt_cool"
             android:scaleType="fitCenter"
+            android:layout_gravity="center_horizontal"
             android:background="@android:color/transparent"
             android:contentDescription="@string/tempText"
             android:onClick="onClick"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
     </LinearLayout>
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/v_seperator"
+        android:background="@android:color/darker_gray"
+        android:layout_toLeftOf="@+id/ll_rightSideTop"
+        android:layout_toStartOf="@+id/ll_rightSideTop"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
 
 </RelativeLayout>

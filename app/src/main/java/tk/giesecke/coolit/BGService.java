@@ -25,11 +25,11 @@ public class BGService extends Service {
     /**
      * Debug tag
      */
-    final static String LOG_TAG = "CoolIt Service";
+    private final static String LOG_TAG = "CoolIt Service";
     /**
      * Receiver for battery temperature display
      */
-    mBatInfoReceiver myBatInfoReceiver;
+    private mBatInfoReceiver myBatInfoReceiver;
 
     @Override
     public void onCreate() {

@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/tempTitle"
         android:id="@+id/tv_temp_title"
         android:layout_alignParentTop="true"
@@ -27,24 +27,21 @@
         android:id="@+id/tv_battTemp"
         android:layout_below="@+id/tv_temp_title"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="80sp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_red_light"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/help"
         android:id="@+id/tv_help"
         android:layout_below="@+id/tv_battTemp"
-        android:layout_toStartOf="@+id/v_seperator"
+        android:layout_toStartOf="@+id/tv_selectTemp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp"
-        android:paddingLeft="10dp"
+        android:padding="10dp"
         android:layout_toLeftOf="@+id/v_seperator"
         tools:ignore="NewApi"/>
 
@@ -54,82 +51,71 @@
         android:background="@android:color/darker_gray"
         android:id="@+id/v_seperator"
         android:layout_below="@+id/tv_battTemp"
+        android:layout_toLeftOf="@+id/bt_exit"
+        android:layout_toStartOf="@+id/tv_selectTemp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/ll_rightSideBottom"
-        android:layout_toStartOf="@+id/ll_rightSideBottom"
-        android:layout_alignWithParentIfMissing="false"/>
+        android:layout_marginRight="5dp"/>
 
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/activationTemp"
+        android:id="@+id/tv_selectTemp"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/tv_battTemp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentRight="false"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/ll_rightSideTop"
-        android:layout_below="@+id/tv_battTemp">
+        android:layout_alignLeft="@+id/np_alarmTemp"
+        android:layout_alignStart="@+id/np_alarmTemp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/activationTemp"
-            android:id="@+id/tv_selectTemp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"/>
-
-        <NumberPicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/np_alarmTemp"
-            android:entries="@array/alarmTemp"
-            android:layout_gravity="center"
-            android:measureWithLargestChild="false"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/np_alarmTemp"
+        android:entries="@array/alarmTemp"
+        android:layout_below="@+id/tv_selectTemp"
+        android:layout_gravity="center"
+        android:measureWithLargestChild="false"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_exit"
+        android:text="@android:string/cancel"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@android:string/cancel"
+        android:layout_gravity="end"
+        android:background="@drawable/redbutton"
+        android:onClick="onClick"
+        android:scaleType="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/bt_set"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_set"
+        android:text="@android:string/ok"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@android:string/ok"
+        android:background="@drawable/greenbutton"
+        android:layout_gravity="end"
+        android:onClick="onClick"
+        android:scaleType="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignParentBottom="true"
-        android:id="@+id/ll_rightSideBottom"
-
-        android:gravity="bottom">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt_exit"
-            android:text="@android:string/cancel"
-            android:textColor="#FFFFFF"
-            android:contentDescription="@android:string/cancel"
-            android:background="@drawable/redbutton"
-            android:onClick="onClick"
-            android:scaleType="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt_set"
-            android:text="@android:string/ok"
-            android:textColor="#FFFFFF"
-            android:contentDescription="@android:string/ok"
-            android:background="@drawable/greenbutton"
-            android:onClick="onClick"
-            android:scaleType="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="5dp"
-            />
-
-    </LinearLayout>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -149,7 +135,6 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/tempText"
             android:onClick="onClick"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal|bottom"/>
     </LinearLayout>
-
 </RelativeLayout>
