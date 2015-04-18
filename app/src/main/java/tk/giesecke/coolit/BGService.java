@@ -98,10 +98,6 @@ public class BGService extends Service {
                 if (BuildConfig.DEBUG) Log.d(LOG_TAG, "Updating widgets");
                 CoolItWidget.forceUpdate(context);
             }
-            // TODO remove this debug message
-            else {
-                if (BuildConfig.DEBUG) Log.d(LOG_TAG, "No active widgets");
-            }
             stopSelf();
         }
     }

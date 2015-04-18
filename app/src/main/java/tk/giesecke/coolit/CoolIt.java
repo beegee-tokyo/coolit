@@ -211,8 +211,8 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
                 /** AlarmManager for repeated call of background service */
                 AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 // TODO change repeat value to 30min (1800000) instead of test value of 30s (30000)
-                manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
-                        30000, pendingStartIntent);
+                manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(),
+                        1800000, pendingStartIntent);
                 //Intent startIntent = new Intent(this, BGService.class);
                 //startService(startIntent);
                 try {

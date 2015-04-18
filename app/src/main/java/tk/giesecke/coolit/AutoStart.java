@@ -42,7 +42,7 @@ public class AutoStart extends BroadcastReceiver {
                 // TODO change repeat value to 30min (1800000) instead of test value of 30s (30000)
                 /** AlarmManager for repeated call of background service */
                 AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-                manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 30000, pendingIntent);
+                manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1800000, pendingIntent);
             }
         }
     }
