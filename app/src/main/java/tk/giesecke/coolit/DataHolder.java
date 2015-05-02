@@ -6,13 +6,11 @@ package tk.giesecke.coolit;
  * Storage for values that are used by activities and background services
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 class DataHolder {
 
-    /**
-     * Storage for current temperature
-     */
+    /** Storage for current temperature */
     private static int currentTemp;
 
     /**
@@ -21,28 +19,6 @@ class DataHolder {
     private DataHolder() {
 
     }
-
-    /**
-     * Storage for PendingIntent
-     * get handler
-     *
-     * @return pendingIntent
-     *            pending intent of BGService for AlarmManager
-     */
-    //public static PendingIntent getPendingIntent() {
-    //    return pendingIntent;
-    //}
-
-    /**
-     * Storage for PendingIntent
-     * store handler
-     *
-     * @param value
-     *            pending intent of BGService for AlarmManager
-     */
-    //public static void writePendingIntent(PendingIntent value) {
-    //    pendingIntent = value;
-    //}
 
     /**
      * Storage for current temperature

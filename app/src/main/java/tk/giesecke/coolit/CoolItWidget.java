@@ -19,12 +19,10 @@ import android.widget.RemoteViews;
  * widget to show current temperature
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 public class CoolItWidget extends AppWidgetProvider {
-    /**
-     * Debug tag
-     */
+    /** Debug tag */
     private static final String LOG_TAG = "CoolIt Widget";
 
     @Override

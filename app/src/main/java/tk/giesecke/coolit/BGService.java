@@ -19,16 +19,12 @@ import android.widget.Toast;
  * Background service to check current temperature, called every 30 minutes
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 public class BGService extends Service {
-    /**
-     * Debug tag
-     */
+    /** Debug tag */
     private final static String LOG_TAG = "CoolIt Service";
-    /**
-     * Receiver for battery temperature display
-     */
+    /** Receiver for battery temperature display */
     private mBatInfoReceiver myBatInfoReceiver;
 
     @Override

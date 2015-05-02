@@ -14,12 +14,10 @@ import android.util.Log;
  * Broadcast receiver for boot completed
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 public class AutoStart extends BroadcastReceiver {
-    /**
-     * Debug tag
-     */
+    /** Debug tag */
     private final static String LOG_TAG = "CoolIt AutoStart";
 
     public AutoStart() {

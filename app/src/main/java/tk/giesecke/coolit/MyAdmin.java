@@ -12,7 +12,7 @@ import android.widget.Toast;
  * device admin stuff required to be a device admin
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 public class MyAdmin extends DeviceAdminReceiver {
 

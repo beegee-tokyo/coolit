@@ -19,6 +19,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Typeface;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,9 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -36,44 +40,26 @@ import java.util.List;
  * main activity
  *
  * @author Bernd Giesecke
- * @version 1.0 April 5, 2015.
+ * @version 1.0 May 2, 2015.
  */
 public class CoolIt extends ActionBarActivity implements View.OnClickListener {
-    /**
-     * Debug tag
-     */
+    /** Debug tag */
     private final static String LOG_TAG = "CoolIt";
-    /**
-     * Activity context
-     */
+    /** Activity context */
     private static Activity activity;
-    /**
-     * Receiver for battery temperature display
-     */
+    /** Receiver for battery temperature display */
     private mBatInfoReceiver myBatInfoReceiver;
-    /**
-     * TextView for battery temperature display
-     */
+    /** TextView for battery temperature display */
     private TextView tv_battTemp;
-    /**
-     * Selected temperature for kill all apps and switch off screen
-     */
+    /** Selected temperature for kill all apps and switch off screen */
     private int alarmTemp;
-    /**
-     * Access to shared preferences
-     */
+    /** Access to shared preferences */
     private SharedPreferences myPrefs;
-    /**
-     * Access to DevicePolicyManager
-     */
+    /** Access to DevicePolicyManager */
     private DevicePolicyManager deviceManger;
-    /**
-     * ComponentName of Admin activity
-     */
+    /** ComponentName of Admin activity */
     private ComponentName compName;
-    /**
-     * Result of request for device admin
-     */
+    /** Result of request for device admin */
     private static final int RESULT_ENABLE = 1;
 
     @Override
@@ -99,7 +85,14 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
             startActivityForResult(intent, RESULT_ENABLE);
         }
 
-        /* Receiver for battery temperature sensor */
+        // Enable access to internet
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            /** ThreadPolicy to get permission to access internet */
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        /** Receiver for battery temperature sensor */
         myBatInfoReceiver = new mBatInfoReceiver();
         this.registerReceiver(myBatInfoReceiver,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -137,9 +130,7 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
         };
 
         // Get list with available intervals for reboot
-        /*
-      Array of available temperatures
-     */
+        /** Array of available temperatures */
         String[] alarmTempArray = getResources().getStringArray(R.array.alarmTemp);
         /** pointer to NumberPicker for interval list */
         NumberPicker np_alarmTemp =
@@ -154,6 +145,13 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
         alarmTemp = alarmTempArray.length - 1;
         alarmTemp = myPrefs.getInt("alarmTempIndex", alarmTemp);
         np_alarmTemp.setValue(alarmTemp);
+
+        // Activate the advertisements
+        /** View for Google Adsense ads */
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        /** Request for ad from Google */
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -216,7 +214,6 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
                 myAlert(this, getString(R.string.watchOnTitle),
                         getString(R.string.watchOnText, Integer.toString(floatAlarmTemp[alarmTemp]) +
                                 getString(R.string.degreeSign)));
-                //activity.finish();
                 break;
         }
     }
@@ -354,7 +351,7 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
      * @param message
      * 		Message in alert dialog
      */
-    public static void myAlert(Context context, String title, String message) {
+    private static void myAlert(Context context, String title, String message) {
 
         /** Builder for alert dialog */
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(

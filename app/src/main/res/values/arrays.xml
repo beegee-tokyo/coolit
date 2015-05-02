@@ -2,6 +2,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <string-array name="alarmTemp" tools:ignore="MissingTranslation">
+        <item>40&#176;C</item>
+        <item>45&#176;C</item>
+        <item>50&#176;C</item>
+        <item>55&#176;C</item>
         <item>60&#176;C</item>
         <item>65&#176;C</item>
         <item>70&#176;C</item>
@@ -14,6 +18,10 @@
     </string-array>
 
     <integer-array name="intAlarmTemp">
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
         <item>60</item>
         <item>65</item>
         <item>70</item>
