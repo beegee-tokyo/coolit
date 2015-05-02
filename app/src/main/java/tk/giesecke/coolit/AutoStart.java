@@ -39,7 +39,6 @@ public class AutoStart extends BroadcastReceiver {
                 Intent alarmIntent = new Intent(context, BGService.class);
                 /** Pending intent of background service */
                 PendingIntent pendingIntent = PendingIntent.getService(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                // TODO change repeat value to 30min (1800000) instead of test value of 30s (30000)
                 /** AlarmManager for repeated call of background service */
                 AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                 manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1800000, pendingIntent);

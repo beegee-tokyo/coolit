@@ -67,7 +67,6 @@ public class BGService extends Service {
             float alarmTemp = myPrefs.getFloat("alarmTemp", 500);
             if (alarmTemp < temp / 10) {
                 if (BuildConfig.DEBUG) Log.d(LOG_TAG, "Temperature exceeds alarmTemp " + alarmTemp);
-                // TODO remove this toast
                 Toast.makeText(context.getApplicationContext(),
                         context.getString(R.string.alarmTitle) + "\n" +
                                 context.getString(R.string.alarmText),

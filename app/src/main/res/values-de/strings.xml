@@ -10,4 +10,6 @@
     <string name="notDeviceAdmin">Die Applikation hat keine Admin Rechte. Laufende Applikationen werden beendet, aber der Bildschirm wird nicht abgeschalten.</string>
     <string name="tempTitle">Aktuelle Temperatur</string>
     <string name="activationTemp">Start\nTemp</string>
+    <string name="watchOnText">Alle Applikationen werden beendet wenn die Batterie Temperatur ist hoeher als %1$s und der Bildschirm wird abgeschalten.</string>
+    <string name="watchOnTitle">Ueberwachung ist aktiviert</string>
 </resources>

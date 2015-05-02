@@ -71,7 +71,6 @@ public class CoolItWidget extends AppWidgetProvider {
                 PendingIntent.FLAG_CANCEL_CURRENT);
         /** AlarmManager for repeated call of background service */
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        // TODO change repeat value to 30min (1800000) instead of test value of 30s (30000)
         manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(),
                 1800000, pendingStartIntent);
         Intent startIntent = new Intent(context, BGService.class);
@@ -126,7 +125,7 @@ public class CoolItWidget extends AppWidgetProvider {
         int temp = DataHolder.getCurrentTemp();
         /** Current temperature converted from int to string */
         String currTemp = Integer.toString(temp / 10) + "." + Integer.toString(temp - (temp / 10 * 10)) +
-                context.getString(R.string.degreeSign) + "C";
+                context.getString(R.string.degreeSign);
         if (BuildConfig.DEBUG) Log.d(LOG_TAG, "currTemp " + currTemp);
         if (temp < 160) {
             views.setTextColor(R.id.tv_widgetTemp, context.getResources().getColor(android.R.color.holo_blue_light));

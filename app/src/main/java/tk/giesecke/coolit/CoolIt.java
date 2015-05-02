@@ -3,11 +3,13 @@ package tk.giesecke.coolit;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -79,11 +81,6 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         deviceManger = (DevicePolicyManager) getSystemService(
                 Context.DEVICE_POLICY_SERVICE);
-        /*
-      Access to ActivityManager
-     */
-        ActivityManager activityManager = (ActivityManager) getSystemService(
-                Context.ACTIVITY_SERVICE);
         compName = new ComponentName(this, MyAdmin.class);
         setContentView(R.layout.cool_it);
 
@@ -210,16 +207,16 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 /** AlarmManager for repeated call of background service */
                 AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                // TODO change repeat value to 30min (1800000) instead of test value of 30s (30000)
                 manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(),
                         1800000, pendingStartIntent);
-                //Intent startIntent = new Intent(this, BGService.class);
-                //startService(startIntent);
                 try {
                     this.unregisterReceiver(myBatInfoReceiver);
                 } catch (Exception ignore) {
                 }
-                activity.finish();
+                myAlert(this, getString(R.string.watchOnTitle),
+                        getString(R.string.watchOnText, Integer.toString(floatAlarmTemp[alarmTemp]) +
+                                getString(R.string.degreeSign)));
+                //activity.finish();
                 break;
         }
     }
@@ -328,7 +325,7 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
             temp = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
             /** Current temperature converted from int to string */
             String currTemp = Integer.toString(temp / 10) + "." + Integer.toString(temp - (temp / 10 * 10)) +
-                    getString(R.string.degreeSign) + "C";
+                    getString(R.string.degreeSign);
             if (BuildConfig.DEBUG) Log.d(LOG_TAG, "onReceive battery temperature " + currTemp);
             tv_battTemp.setText(currTemp);
             if (temp < 160) {
@@ -345,5 +342,44 @@ public class CoolIt extends ActionBarActivity implements View.OnClickListener {
                 tv_battTemp.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
             }
         }
+    }
+
+    /**
+     * Customized alert
+     *
+     * @param context
+     * 		Context of app
+     * @param title
+     * 		Title of alert dialog
+     * @param message
+     * 		Message in alert dialog
+     */
+    public static void myAlert(Context context, String title, String message) {
+
+        /** Builder for alert dialog */
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle(title);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(context.getResources().getString(android.R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                activity.finish();
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        /** Alert dialog to be shown */
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 }
